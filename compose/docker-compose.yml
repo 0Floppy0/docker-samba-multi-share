@@ -1,0 +1,18 @@
+services:
+  samba:
+    container_name: samba
+    image: samba:latest
+    ports:
+      - 445:445
+      - 139:139
+    volumes:
+      - <<path to your smbfile>>/smb.conf:/etc/samba/smb.conf
+      - /mnt/shareA:/mnt/shareA
+      - /mnt/shareB:/mnt/shareB
+environment:
+      - user_count=2
+      - user1=userA
+      - password1=USERA.PW.HERE
+      - user2=userB
+      - password2=USERB.PW.HERE
+    restart: always
